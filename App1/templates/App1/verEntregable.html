@@ -1,0 +1,37 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+
+{% block title %}
+Entregables
+{% endblock %}
+
+{% block titulo%} 
+Esta es la pagina de los entregables!
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="/App1/resultadoEntregable/" method="GET"> 
+    <input type="text" name="materia" id="materia">
+    <input type="submit" value="Buscar">
+</form>
+    
+    {% for entreg in entregables %}
+
+        <p>Materia: {{entreg.materia}}<br>Entregado: {{entreg.entregado}} </p>
+
+    {% endfor %}
+    
+</body>
+</html>
+{% endblock %}
+{% block Agregar %}
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        <table>
+            {{formEntregable.as_table}}
+        </table>
+        <input type="submit" value="Agregar">
+    </form>
+     {% endblock %}

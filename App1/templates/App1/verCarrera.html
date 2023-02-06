@@ -1,0 +1,35 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+
+{% block title %}
+Carreras
+{% endblock %}
+
+{% block titulo%} 
+Esta es la pagina de las carreras!
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="/App1/resultadoCarrera/" method="GET"> 
+    <input type="text" name="nombre" id="nombre">
+    <input type="submit" value="Buscar">
+</form>
+
+{% for carrer in carreras %}
+
+        <p>Carrera: {{carrer.nombre}} <br>Materia: {{carrer.materias}} </p>
+
+    {% endfor %}
+{% endblock %}
+
+{% block Agregar %}
+<form action="" method="POST"> {% csrf_token %}
+
+    <table>
+        {{formCarrera.as_table}}
+    </table>
+    <input type="submit" value="Agregar">
+</form>{% endblock %}
+
+    

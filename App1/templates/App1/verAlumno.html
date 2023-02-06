@@ -1,0 +1,32 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block title %}
+Alumnos
+{% endblock %}
+{% block titulo%} 
+Esta es la pagina de los alumnos!
+{% endblock %}
+{% block descripcion %}
+
+<form action="/App1/resultadoAlumno/" method="GET">
+    <input type="text" name="nombre" id="nombre">
+    <input type="submit" value="Buscar">
+</form>
+
+{% for alum in alumnos %}
+
+<p>Alumno: {{alum.nombre}} {{alum.apellido}} <br>Materia: {{alum.materia}} </p>
+
+{% endfor %}
+
+{% endblock %}
+{% block Agregar %}
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        <table>
+            {{formAlumn.as_table}}
+        </table>
+        <input type="submit" value="Agregar">
+    </form>
+     {% endblock %}

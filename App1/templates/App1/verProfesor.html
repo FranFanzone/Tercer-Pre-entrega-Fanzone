@@ -1,0 +1,32 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block title %}
+Profesores
+{% endblock %}
+{% block titulo%} 
+Esta es la pagina de los profesores!
+{% endblock %}
+{% block descripcion %}
+
+<form action="/App1/resultadoProfesor/" method="GET">
+    <input type="text" name="nombre" id="nombre">
+    <input type="submit" value="Buscar">
+</form>
+
+    {% for profes in profesores %}
+
+        <p>Profesor: {{profes.nombre}} {{profes.apellido}} <br>Materia: {{profes.materia}} <br>Email: {{profes.email}} </p>
+
+    {% endfor %}
+
+{% endblock %}
+{% block Agregar %}
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        <table>
+            {{formProfe.as_table}}
+        </table>
+        <input type="submit" value="Agregar">
+    </form>
+     {% endblock %}
